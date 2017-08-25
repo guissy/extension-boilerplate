@@ -8,7 +8,7 @@ body, html {
 }
 
 #app {
-  padding: 20px 20px;
+  padding: 10px;
   background: $white;
 }
 
@@ -26,7 +26,7 @@ footer {
 }
 
 .popup-content {
-  min-width: 220px;
+  min-width: 240px;
   min-height: 100px;
   max-width: 350px;
 }
@@ -45,11 +45,17 @@ footer {
   border: 1px solid $gray;
   margin: 0;
 
-  h3 {
+  .tops {
+    text-align: center;
+    transform: translateX(-15px);
+  }
+  .title {
     margin: 0;
     padding: 0;
     border-bottom: 1px solid $gray;
     padding-bottom: 0.5em;
+    text-align: center;
+    font-size: 1.8em;
   }
 
   .description {
@@ -85,4 +91,21 @@ footer {
   border-radius: 2px;
   outline: none;
   font-size: 1em;
+}
+
+table {
+  width: 100%;
+}
+td, th {
+  border: 1px solid #dddddd;
+}
+td {
+  text-align: right;
+  padding-right: 5px;
+}
+th {
+  text-align: center;
+}
+td:first-child {
+  text-align: center;
 }

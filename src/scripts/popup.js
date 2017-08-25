@@ -13,12 +13,24 @@ var template = (data) => {
   var json = JSON.stringify(data);
   return (`
   <div class="site-description">
-    <h3 class="title">${data.title}</h3>
-    <p class="description">${data.description}</p>
-    <a href="${data.url}" target="_blank" class="url">${data.url}</a>
+    <p class="tops">总分：<span class="title">
+<span style="color: ${data.scores>8?'#F00':'#808080'}">${data.scores.toFixed(1)}</span>
+</span></p>
+    <p>
+      <table style="display: ${data.scores>0?'':'none'}">
+        <thead>
+        <tr> <th>关键字</th> <th>时长</th> <th>得分</th> </tr>
+        </thead>
+        <tbody>
+        ${data.words.map(([a,b,c])=>'<tr><td>'+a+'</td><td>'+b+'</td><td>'+c+'</td></tr>').join('')}
+        </tbody>
+      </table>
+      <p style="display: ${data.scores==0?'':'none'}">很遗憾，没匹配到关键字！</p>
+    </p>
+    <small>${data.article}</small>
   </div>
   <div class="action-container">
-    <button data-bookmark='${json}' id="save-btn" class="btn btn-primary">Save</button>
+    <!--<button data-bookmark='${json}' id="save-btn" class="btn btn-primary">Save</button>-->
   </div>
   `);
 }
@@ -33,7 +45,7 @@ var renderBookmark = (data) => {
     var tmpl = template(data);
     displayContainer.innerHTML = tmpl;  
   } else {
-    renderMessage("Sorry, could not extract this page's title and URL")
+    renderMessage("Ooops, 需要重新刷新此页面！")
   }
 }
 
